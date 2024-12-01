@@ -7,6 +7,7 @@ import Service from './assets/Pages/Service';
 import Contact from './assets/Pages/Contact';
 import AppLayout from './assets/Component/AppLayout';
 import ServiceDetail from './assets/Pages/ServiceDetail';
+import ServiceItem from './assets/Component/serviceItem';
 
 
 function App() {
@@ -20,8 +21,12 @@ function App() {
         <Route index element={<Navigate to="/home" replace />} />
         <Route path="home" element={<Home/>}/>
         <Route path="about" element={<About/>}/>
-        <Route path="services" element={<Service/>}/>
-        <Route path="services/:serviceName" element={<ServiceDetail />} />
+        <Route path="services" element={<Service />}>
+         
+            <Route path=":serviceName" element={<ServiceDetail />}>
+              <Route path=":subServiceName" element={<ServiceItem />} />
+            </Route>
+          </Route>
         <Route path="contact" element={<Contact/>}/>
         
         </Route>

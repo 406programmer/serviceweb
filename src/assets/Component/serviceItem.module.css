@@ -1,0 +1,164 @@
+/* Main Layout Styles */
+.serviceItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+    background-color: #f7f7f7;
+    min-height: 100vh;
+  }
+  
+  .serviceItem .header {
+    width: 100%;
+    height: 300px; /* Adjust the height as needed */
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .serviceItem .header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay to dim the image */
+    z-index: 1;
+  }
+  
+  .serviceItem .header h1 {
+    color: white;
+    font-size: 48px; /* Large font for sub-service name */
+    font-weight: 700;
+    z-index: 2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Text shadow for better visibility */
+  }
+  
+  .serviceItem .header img {
+    display: none; /* Hide the image as it's now the background */
+  }
+  
+  /* Content Section */
+  .serviceItem .content {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+  }
+  
+  .serviceItem .content h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .serviceItem .content p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .serviceItem .content ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  .serviceItem .content ul li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+  }
+  
+  .serviceItem .content ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    font-size: 20px;
+    color: #bae545;
+  }
+  
+  /* Buttons */
+  .serviceItem .button, .serviceItem .readMore {
+    width: 200px;
+    padding: 12px 20px;
+    background-color: #bae545;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .serviceItem .button:hover, .serviceItem .readMore:hover {
+    background-color: #a0d93e;
+  }
+  
+  /* Back Button */
+  .serviceItem .backButton {
+    margin-top: 30px;
+    padding: 10px 15px;
+    background-color: #444;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .serviceItem .backButton:hover {
+    background-color: #333;
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .serviceItem .header h1 {
+      font-size: 32px; /* Smaller font size on mobile */
+    }
+  
+    .serviceItem .header {
+      height: 250px; /* Adjust header size on small screens */
+    }
+  
+    .serviceItem .content {
+      padding: 20px;
+    }
+  
+    .serviceItem .content h2 {
+      font-size: 24px;
+    }
+  
+    .serviceItem .content p {
+      font-size: 16px;
+    }
+  
+    .serviceItem .content ul li {
+      font-size: 14px;
+    }
+  
+    .serviceItem .button, .serviceItem .readMore, .serviceItem .backButton {
+      width: 100%;
+    }
+  }
+  

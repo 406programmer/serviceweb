@@ -1,15 +1,16 @@
 import React from "react";
 import { services } from "./Service";
-import { useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import styles from "./ServiceDetail.module.css";
 
 const ServiceDetail = () => {
   const navigate = useNavigate();
-  const { serviceName } = useParams();
+  const { serviceName ,subServiceName} = useParams();
 
   const service = services.find((s) => s.path === serviceName);
 
   return (
+    !subServiceName ?
     <div className={styles.main}>
       <h1 className={styles.title}>{service?.title}</h1>
       <div className={styles.services}>
@@ -26,8 +27,10 @@ const ServiceDetail = () => {
               <p className={styles.description}>{subService.description}</p>
               <button
                 className={styles.readMore}
-                onClick={() => alert("Read more clicked!")}
-              >
+                onClick={() =>
+                  navigate(`/services/${serviceName}/${subService.name}`, {
+                    state: { subService },
+                  })     }>
                 Read More
               </button>
             </div>
@@ -38,6 +41,8 @@ const ServiceDetail = () => {
         Back
       </button>
     </div>
+    :
+    <Outlet/>
   );
 };
 
