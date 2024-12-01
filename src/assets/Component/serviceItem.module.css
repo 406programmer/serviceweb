@@ -9,6 +9,9 @@
   }
   
   .serviceItem .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 300px; /* Adjust the height as needed */
     background-size: cover;
@@ -17,10 +20,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
   }
   
   .serviceItem .header::before {
@@ -43,7 +42,12 @@
   }
   
   .serviceItem .header img {
-    display: none; /* Hide the image as it's now the background */
+    width: 20em;
+    height: auto;
+    border-radius: 12%;
+    border: 4px solid #fff;
+    filter: brightness(100%);
+    z-index: 100;
   }
   
   /* Content Section */
@@ -116,7 +120,7 @@
   /* Back Button */
   .serviceItem .backButton {
     margin-top: 30px;
-    padding: 10px 15px;
+    padding: 10px 30px;
     background-color: #444;
     color: white;
     font-size: 16px;
@@ -158,7 +162,31 @@
     }
   
     .serviceItem .button, .serviceItem .readMore, .serviceItem .backButton {
-      width: 100%;
+      width: 100%; /* Make buttons full-width on small screens */
     }
+  
+    .serviceItem .header img {
+      width: 10em; /* Adjust image size for smaller screens */
+    }
+  
+    .serviceItem .header {
+      flex-direction: column; /* Stack the image and text vertically on small screens */
+      gap: 2rem; /* Reduce the gap between the elements */
+    }
+  }
+  
+  .cartButton {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px 10px;
+  }
+  
+  .cartButton:hover {
+    background-color: #0056b3;
   }
   

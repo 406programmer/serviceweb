@@ -8,12 +8,14 @@ import Contact from './assets/Pages/Contact';
 import AppLayout from './assets/Component/AppLayout';
 import ServiceDetail from './assets/Pages/ServiceDetail';
 import ServiceItem from './assets/Component/serviceItem';
-
+import {CartProvider} from './assets/Context/CartContext';
 
 function App() {
  
 
   return (
+    <CartProvider>
+
     <Router>
       <Routes>
        
@@ -32,6 +34,7 @@ function App() {
         </Route>
       </Routes>
     </Router>
+    </CartProvider>
   )
 }
 
