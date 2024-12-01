@@ -7,6 +7,7 @@ import environment from "../images/environment.jpg";
 import styles from "./Home.module.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
+
 export default function Home() {
   const images = [
     { src: waste, alt: "Waste" },
@@ -58,6 +59,7 @@ export default function Home() {
           <IoIosArrowBack />
         </button>
       </div>
+  
     </main>
   );
 }

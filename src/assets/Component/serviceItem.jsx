@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import styles from "./ServiceItem.module.css";
 import CartContext from "../Context/CartContext";
+import StarRating from "./StarRating";
 
 const ServiceItem = () => {
   const location = useLocation();
@@ -12,7 +13,7 @@ const ServiceItem = () => {
 
   // Check if the sub-service is already in the cart
   const isAlreadyInCart = cart.some(item => item.id === subService?.id);
-
+  
   const handleCartButtonClick = () => {
     if (isAlreadyInCart) {
       // If it's already in the cart, remove it
@@ -57,6 +58,7 @@ const ServiceItem = () => {
             ))}
           </ol>
         </div>
+        <StarRating/>
         <button onClick={handleCartButtonClick} className={styles.cartButton}>
           {isAlreadyInCart ? "Remove from Cart" : "Add to Cart"}
         </button>

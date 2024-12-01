@@ -1,0 +1,146 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+    transition: background-color 0.5s ease, backdrop-filter 0.5s ease;
+  }
+  
+  .formContainer {
+    background-color: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 90%;
+    z-index: 1000;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    
+    border-radius: 8px; /* Rounded corners for the entire toggle container */
+    overflow: hidden; /* Prevents border-radius from being cut off */
+  }
+  
+  .toggleButton {
+    flex: 1;
+    padding: 10px;
+    color: #000;
+    cursor: pointer;
+    outline: none;
+    border:none;
+    border-radius: 0; /* Initially no rounded corners */
+    transition: background 0.3s, color 0.3s, border-radius 0.3s; /* Smooth transition */
+  }
+  
+  .toggleButton.active {
+    background: #04B004; /* Green when active */
+    color: #fff;
+    border-radius: 8px; /* Rounded corners on active button */
+  }
+  
+  .toggleButton:not(.active):first-child {
+    border-radius: 8px 0 0 8px; /* Left side rounded for the first button */
+  }
+  
+  .toggleButton:not(.active):last-child {
+    border-radius: 0 8px 8px 0; /* Right side rounded for the second button */
+  }
+  
+  .toggleButton:hover {
+    background: #f3f2f2; /* Light gray when hovered */
+  }
+  
+  
+  .input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 14px;
+  }
+  
+  .input:focus {
+    border-color: #04B004;
+    outline: none;
+    box-shadow: 0 0 8px rgba(29, 43, 100, 0.3);
+  }
+  
+  .button {
+    width: 100%;
+    padding: 12px;
+    background-color: #04B004;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #03a003;
+    transform: scale(1.05);
+  }
+  
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: -8px;
+    text-align: left;
+  }
+  
+  .toggleLink {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s;
+    text-align: center;
+  }
+  
+  .toggleLink:hover {
+    color: #1d2b64;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .closeButton:hover {
+    color: #ff0000; /* Red color when hovered */
+  }

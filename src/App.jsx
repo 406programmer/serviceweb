@@ -9,6 +9,7 @@ import AppLayout from './assets/Component/AppLayout';
 import ServiceDetail from './assets/Pages/ServiceDetail';
 import ServiceItem from './assets/Component/serviceItem';
 import {CartProvider} from './assets/Context/CartContext';
+import LoginSign from './assets/Component/LoginSign'; 
 
 function App() {
  
@@ -30,7 +31,8 @@ function App() {
             </Route>
           </Route>
         <Route path="contact" element={<Contact/>}/>
-        
+        <Route path="login" element={<LoginSign />} /> {/* Add Login route */}
+       
         </Route>
       </Routes>
     </Router>

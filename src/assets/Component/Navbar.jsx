@@ -1,12 +1,13 @@
-import BasicButton from "./BasicButton";
 import styles from "./Navbar.module.css";
 import logo from "../images/logo.png";
-import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+import { Link,useNavigate } from "react-router-dom";
 
 export default function Navbar() {
-  
-const { loginWithRedirect,isAuthenticated,user,logout } = useAuth0();
+
+  const navigate = useNavigate(); 
+  const handleLoginClick = () => {
+    navigate('/login'); // Navigate to /login when button is clicked
+  };
 
   return (
     <>
@@ -20,16 +21,12 @@ const { loginWithRedirect,isAuthenticated,user,logout } = useAuth0();
         <div><Link to="/services" >Services</Link></div>
         <div><Link to="/contact" >Contact Us</Link> </div>
         </div>
-        { !isAuthenticated &&
-    <button onClick={() => loginWithRedirect()} className={styles.button}>Log In</button> 
-    }
-      { isAuthenticated &&
-      <><p>Welcome {user.name}</p>
-      <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
-        Log Out
-      </button></>
+    <div className=" flex gap-1">
+    <button className={styles.button} onClick={handleLoginClick}>Log In</button> 
+    <button className={styles.button}>Log Out</button>
+      </div>    
     
-  }</nav>
+  </nav>
     </>
   );
 }
