@@ -1,0 +1,16 @@
+.layoutcontainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full height of the viewport */
+  }
+  
+  .content {
+    flex: 1; /* Takes the available space, pushing the footer down */
+  }
+  
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
