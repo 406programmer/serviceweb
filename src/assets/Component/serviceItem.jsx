@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import styles from "./ServiceItem.module.css";
 
 const ServiceItem = () => {
-  const { serviceName, subServiceName } = useParams();
   const location = useLocation();
   const { subService } = location.state || {}; // Get sub-service data from state
- console.log(subService);
+  const[userSelectedService,setUserSelectedService] = useState([]);
+
+
   if (!subService) {
     return <div className={styles.error}>Service not found or invalid access!</div>;
   }
