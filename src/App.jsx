@@ -31,7 +31,7 @@ function App() {
             </Route>
           </Route>
         <Route path="contact" element={<Contact/>}/>
-        <Route path="login" element={<LoginSign />} /> {/* Add Login route */}
+        <Route path="login" element={<LoginSign />} /> 
        
         </Route>
       </Routes>
