@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import styles from "./ServiceItem.module.css";
 import CartContext from "../Context/CartContext";
@@ -26,6 +26,11 @@ const ServiceItem = () => {
   if (!subService) {
     return <div className={styles.error}>Service not found or invalid access!</div>;
   }
+
+ 
+    useEffect(() => {
+      window.scrollTo(0, 0);  // Scroll to the top when the component is mounted
+    }, [subService]);
 
   return (
     <div className={styles.serviceItem}>

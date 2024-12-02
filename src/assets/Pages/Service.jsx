@@ -24,6 +24,7 @@ export const services = [
       id:1001,
       description: "Advanced systems for purifying water to meet quality standards for drinking and industrial use.",
       image: w11,
+      path: "water-treatment",
       details: {
         overview: "Water purification systems are advanced technologies designed to purify water to meet the highest standards for both drinking and industrial purposes. These systems ensure the removal of contaminants, bacteria, viruses, and harmful chemicals, making water safe for consumption and industrial processes.",
         benefits: [
@@ -49,6 +50,7 @@ export const services = [
       id:1002,
       description: "Solutions designed for treating water in industrial facilities, ensuring regulatory compliance.",
       image: w12,
+      path: "water-treatment",
       details: {
         overview: "Industrial water treatment focuses on the treatment of water used in industrial settings. This includes water used in manufacturing, cooling, and other industrial applications. Ensuring water is free from contaminants like heavy metals, oils, and chemicals is critical for maintaining smooth operations and protecting machinery.",
         benefits: [
@@ -72,6 +74,7 @@ export const services = [
     {
       name: "Effluent Treatment Plants (ETP)",
       id:1003,
+      path: "water-treatment",
       description: "Facilities for treating wastewater from industries, removing harmful pollutants before discharge.",
       image: w13,
       details: {
@@ -97,6 +100,7 @@ export const services = [
     {
       name: "Rainwater Harvesting",
       id:1004,
+      path: "water-treatment",
       description: "Techniques to collect and store rainwater for reuse, reducing water scarcity.",
       image: w14,
       details: {

@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from './Navbar';
 import Footer from './Footer';
 import styles from './AppLayout.module.css'
-import ServiceItem from "./serviceItem";
+import RecommandedServices from './RecommandedServices.jsx'
 
 export default function AppLayout() {
   return (
@@ -10,7 +10,7 @@ export default function AppLayout() {
         <Navbar/>
     <div className={styles.content}>
       <Outlet />
-      <ServiceItem/>
+     <RecommandedServices/>
     </div>
     <Footer />
   </div>
