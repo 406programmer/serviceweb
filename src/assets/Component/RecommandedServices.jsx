@@ -17,6 +17,7 @@ const RecommandedServices = () => {
     })
       .then((response) => {
         if (!response.ok) {
+          console.error('Error fetching data:', response.statusText);
           throw new Error("Network response was not ok");
         }
         return response.json();
@@ -32,7 +33,6 @@ const RecommandedServices = () => {
   useEffect(() => {
     window.scrollTo(0, 0); 
   }, []);
-  
 
   const findServiceDetails = (serviceName) => {
     for (const service of services) {
@@ -61,16 +61,15 @@ const RecommandedServices = () => {
                 <h3>{recommendedService.ServiceName}</h3>
                 <p>{serviceDetails?.description || "No description available."}</p>
                 <button
-  onClick={() =>
-    navigate(`/services/${serviceDetails.path}/${recommendedService.ServiceName}`, {
-      state: { subService: serviceDetails },
-    })
-  }
-  className={styles.button}
->
-  Learn More
-</button>
-
+                  onClick={() =>
+                    navigate(`/services/${serviceDetails.path}/${recommendedService.ServiceName}`, {
+                      state: { subService: serviceDetails },
+                    })
+                  }
+                  className={styles.button}
+                >
+                  Learn More
+                </button>
               </div>
             );
           })
@@ -83,3 +82,4 @@ const RecommandedServices = () => {
 };
 
 export default RecommandedServices;
+//1

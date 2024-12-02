@@ -17,7 +17,7 @@
     background-color: white;
     padding: 30px;
     border-radius: 16px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);          
     width: 400px;
     max-width: 90%;
     z-index: 1000;
@@ -102,7 +102,7 @@
   .error {
     color: red;
     font-size: 14px;
-    margin-top: -8px;
+    margin: 1px;
     text-align: left;
   }
   

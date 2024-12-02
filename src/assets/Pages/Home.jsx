@@ -23,7 +23,7 @@ export default function Home() {
     // Set up interval for auto-sliding
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000);
+    }, 4000);
 
     // Clear interval when component unmounts or when currentIndex changes
     return () => clearInterval(interval);

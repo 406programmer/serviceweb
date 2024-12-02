@@ -1,60 +1,61 @@
-.nav{
+.nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px; 
-    background: #e6fdd9;
+    padding: 10px 40px;
+    background: linear-gradient(135deg, #727d89, #88ff99);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding-top: 10px;
+    transition: box-shadow 0.3s ease;
 }
+
+
+.nav:hover {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
 .menu {
     display: flex;
     justify-content: space-evenly;
     font-size: 1.125rem;
     line-height: 1.5;
-    /* margin: 0rem 2rem; */
-
-} 
-
-.menu div{
-    padding: 1rem;
-    color: rgb(0, 0, 0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 100px;
-    transition: padding 1s ease-in-out;
-}
-
-.logo {
-    width: 70px; 
-    height: auto;
 }
 
 .menu div {
     padding: 0.2rem 1rem;
-    transition: all 0.3s ease; /* Smooth transition for all properties */
+    transition: all 0.3s ease;
 }
 
 .menu div:hover {
     padding: 0.3rem 1.2rem;
-    background: linear-gradient(135deg, #caf8cc, #f0f0f0); /* Subtle light gradient */
+    background: linear-gradient(135deg, #8996a5, #20b26e);
     border-radius: 15px;
-    /* border-bottom: 2px solid #327e35; */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15); /* Softer, more diffused shadow */
-    transform: translateY(-2px); /* Slight "lift" effect */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
     color: #144316;
-    transition: all 0.3s ease;
+    transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
-.button{
- border : 1px solid black;
- background-color: #058f05;
- color: rgb(240, 239, 236);
- width: 7rem;
- height : 3rem;
- font-size: large;
- border-radius: 1rem;
- border:none;
+
+.logo {
+    width: 70px;
+    height: auto;
+}
+
+.button {
+    border: 1px solid black;
+    background-color: #058f05;
+    color: rgb(240, 239, 236);
+    width: 7rem;
+    height: 3rem;
+    font-size: large;
+    border-radius: 1rem;
+    border: none;
 }
 
 .button:hover {
@@ -64,4 +65,6 @@
     transition: all 0.3s ease;
 }
 
- 
+body {
+    padding-top: 74px;
+}

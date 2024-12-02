@@ -1,9 +1,10 @@
 from flask import Flask, jsonify
+from flask_cors import CORS  # Make sure this line is present
 import pymysql
 import pandas as pd
 
 app = Flask(__name__)
-
+CORS(app)
 # MySQL database connection details
 db_config = {
     "host": "localhost",
@@ -12,7 +13,7 @@ db_config = {
     "database": "project"
 }
 
-@app.route('/api/service_popularity', methods=['GET'])
+@app.route('/api/service_popularity', methods=['GET'])    
 def get_service_popularity():
     try:
         # Connect to MySQL database

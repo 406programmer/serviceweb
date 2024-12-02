@@ -17,7 +17,7 @@ export const services = [
   icon: "📦",
   path: "water-treatment",
   img: watertm,
-  bgColor: "#bae545",
+  bgColor: "#99c71b",
   subServices: [
     {
       name: "Water Purification Systems",
@@ -132,7 +132,7 @@ export const services = [
     icon: "⚡",
     img :s1,
     path: "sewage-treatment",
-    bgColor: "#d4fd07",
+    bgColor: "#9ce804",
     subServices: [
       "Sewage Treatment Plants (STP)",
       "Recycling Wastewater",
@@ -145,7 +145,7 @@ export const services = [
     icon: "💧",
     img : e1,
     path: "environmental-compliance",
-    bgColor: "#94e380",
+    bgColor: "#8bd279",
     subServices: [
       "Environmental Audits",
       "Green Building Consultancy",
@@ -170,7 +170,7 @@ export const services = [
     icon: "🚰",
     img: c1,
     path: "compliance-management",
-    bgColor: "#a6ee0a",
+    bgColor: "#97dd00",
     subServices: [
       "Renewable Energy Systems",
       "Air Quality Monitoring",

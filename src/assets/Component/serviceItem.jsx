@@ -1,40 +1,44 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./ServiceItem.module.css";
 import CartContext from "../Context/CartContext";
+import AuthContext from "../Context/AuthContext";
 import StarRating from "./StarRating";
 
 const ServiceItem = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const { subService } = location.state || {}; // Get sub-service data from state
+  const { cart, dispatch: cartDispatch } = useContext(CartContext); // Access cart and dispatch from CartContext
+  const { authState, dispatch: authDispatch } = useContext(AuthContext); // Access authState and dispatch from AuthContext
 
-  
-  const { cart, dispatch } = useContext(CartContext); // Access cart and dispatch from context
+  const isAlreadyInCart = cart.some((item) => item.id === subService?.id);
 
-  // Check if the sub-service is already in the cart
-  const isAlreadyInCart = cart.some(item => item.id === subService?.id);
-  
   const handleCartButtonClick = () => {
+    if (!authState.isAuthenticated) {
+      navigate("/login");
+    }
+
     if (isAlreadyInCart) {
-      // If it's already in the cart, remove it
-      dispatch({ type: "REMOVE_FROM_CART", payload: subService });
+      // Remove item from cart
+      cartDispatch({ type: "REMOVE_FROM_CART", payload: subService });
     } else {
-      // If it's not in the cart, add it
-      dispatch({ type: "ADD_TO_CART", payload: subService });
+      // Add item to cart
+      cartDispatch({ type: "ADD_TO_CART", payload: subService });
     }
   };
+
   if (!subService) {
     return <div className={styles.error}>Service not found or invalid access!</div>;
   }
 
- 
-    useEffect(() => {
-      window.scrollTo(0, 0);  // Scroll to the top when the component is mounted
-    }, [subService]);
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top on component mount
+  }, [subService]);
 
   return (
     <div className={styles.serviceItem}>
-      <header className={styles.header}  style={{ backgroundImage: `url(${subService.image})` }}>
+      <header className={styles.header} style={{ backgroundImage: `url(${subService.image})` }}>
         <h1 className={styles.title}>{subService.name}</h1>
         <img src={subService.image} alt={subService.name} className={styles.image} />
       </header>
@@ -63,7 +67,7 @@ const ServiceItem = () => {
             ))}
           </ol>
         </div>
-        <StarRating/>
+        <StarRating />
         <button onClick={handleCartButtonClick} className={styles.cartButton}>
           {isAlreadyInCart ? "Remove from Cart" : "Add to Cart"}
         </button>
