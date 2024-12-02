@@ -2,7 +2,8 @@
     margin: 20px auto;
     width: 90%;
     font-family: Arial, sans-serif;
-    overflow: hidden; /* Ensures content outside the container is hidden */
+    overflow: hidden; 
+    background-color: #3a4556;/* Ensures content outside the container is hidden */
   }
   
   .recommendations h2 {

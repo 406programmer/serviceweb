@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .menuIcon .icon {
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .headerLeft .icon,
+  .headerRight .icon {
+    font-size: 20px;
+    margin: 0 10px;
+  }
+  
+  .headerRight {
+    display: flex;
+    align-items: center;
+  }
+  

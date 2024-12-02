@@ -61,7 +61,7 @@ const LoginSignup = () => {
             });
             
             // Navigate after successful login
-            navigate("/home");
+            navigate(-1);
           } else {
             console.log('No user data found'); // Log if user data is missing
             setErrorMessage(data.message); // Show error message

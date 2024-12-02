@@ -1,0 +1,56 @@
+.gridContainer {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 70px 1fr;
+    grid-template-areas: "header header" "sidebar main";
+    height: 100vh;
+    gap: 20px; /* Added gap to separate the sections */
+  }
+  
+  .mainTitle h3 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px; /* Added margin to provide space below the title */
+  }
+  
+  .mainCards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cardInner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .cardIcon {
+    font-size: 30px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .card h1 {
+    margin-top: 10px;
+    font-size: 36px;
+  }
+  
+  .charts {
+    margin-top: 20px;
+    padding: 20px;
+  }
+  

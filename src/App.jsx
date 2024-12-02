@@ -5,7 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import AuthContext ,{ AuthProvider } from "./assets/Context/AuthContext"; // Import AuthProvider
+import AuthContext, { AuthProvider } from "./assets/Context/AuthContext"; // Import AuthProvider
 import Home from "./assets/Pages/Home";
 import About from "./assets/Pages/About";
 import Service from "./assets/Pages/Service";
@@ -16,23 +16,23 @@ import ServiceItem from "./assets/Component/serviceItem";
 import { CartProvider } from "./assets/Context/CartContext";
 import LoginSign from "./assets/Component/LoginSign";
 import Cart from "./assets/Pages/Cart";
+import AdminDash  from "./assets/Admin/AdminDash";
 
 function App() {
-  function ProtectedRoute({ element, ...rest }) {
+  // ProtectedRoute Component for handling authorization
+  function ProtectedRoute({ element }) {
     const { authState } = useContext(AuthContext); // Access authState
-  
+    
+    // If not authenticated, redirect to login
     if (!authState.isAuthenticated) {
       return <Navigate to="/login" replace />;
     }
-  
+
     return element;  // Return the element when authenticated
   }
-  
 
   return (
     <AuthProvider>
-      {" "}
-      {/* Wrap the application with AuthProvider */}
       <CartProvider>
         <Router>
           <Routes>
@@ -48,15 +48,24 @@ function App() {
               <Route path="contact" element={<Contact />} />
               <Route path="login" element={<LoginSign isSignup={false} />} />
               <Route path="signup" element={<LoginSign isSignup={true} />} />
-              <Route
+              
+              {/* Protected Route for Cart */}
+              <Route 
                 path="/cart"
                 element={
-                  <ProtectedRoute>
-                    <Cart />
-                  </ProtectedRoute>
+                  <ProtectedRoute 
+                    element={<Cart />} 
+                  />
                 }
               />
+             
             </Route>
+            <Route 
+                path="/AdminDashboard"
+                element={<AdminDash/>} 
+                  />
+                
+            
           </Routes>
         </Router>
       </CartProvider>

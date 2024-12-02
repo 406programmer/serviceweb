@@ -3,7 +3,8 @@ import styles from "./Navbar.module.css";
 import logo from "../images/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
-import AuthContext from "../Context/AuthContext";  // Import AuthContext
+import AuthContext from "../Context/AuthContext";  
+import { FaUserCircle } from "react-icons/fa";// Import AuthContext
 
 export default function Navbar() {
   const { authState, dispatch } = useContext(AuthContext); // Access auth state and dispatch
@@ -13,6 +14,12 @@ export default function Navbar() {
   const handleLoginClick = () => {
     navigate("/login");
   };
+
+  const handleCartClick = () => {
+    navigate("/cart");
+    window.scrollTo(0, 0); // Scroll to the top of the window
+  };
+
 
   // Handle logout click
   const handleLogoutClick = () => {
@@ -33,12 +40,12 @@ export default function Navbar() {
         <div><Link to="/contact">Contact Us</Link></div>
       </div>
 
-      <div className="flex gap-2 items-center">
-        <FaShoppingCart className="w-7" onClick={() => navigate("Cart")} />
+      <div className="flex gap-3 items-center">
+        <FaShoppingCart style={{ fontSize: '30px'  }} onClick={handleCartClick} />
 
         {authState.isAuthenticated ? (
           <>
-            <span>Welcome, {authState.user?.UserName}</span>
+            <span>{authState.isAuthenticated && <FaUserCircle style={{ fontSize: '30px',margin : " 0px 20px", }}/> }</span>
             <button className={styles.button} onClick={handleLogoutClick}>Log Out</button>
           </>
         ) : (

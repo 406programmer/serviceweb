@@ -17,7 +17,7 @@ export const services = [
   icon: "📦",
   path: "water-treatment",
   img: watertm,
-  bgColor: "#99c71b",
+  bgColor: "#bae545",
   subServices: [
     {
       name: "Water Purification Systems",
@@ -100,7 +100,7 @@ export const services = [
     {
       name: "Rainwater Harvesting",
       id:1004,
-      path: "water-treatment",
+       path: "water-treatment",
       description: "Techniques to collect and store rainwater for reuse, reducing water scarcity.",
       image: w14,
       details: {
@@ -132,7 +132,7 @@ export const services = [
     icon: "⚡",
     img :s1,
     path: "sewage-treatment",
-    bgColor: "#9ce804",
+    bgColor: "#d4fd07",
     subServices: [
       "Sewage Treatment Plants (STP)",
       "Recycling Wastewater",
@@ -145,7 +145,7 @@ export const services = [
     icon: "💧",
     img : e1,
     path: "environmental-compliance",
-    bgColor: "#8bd279",
+    bgColor: "#94e380",
     subServices: [
       "Environmental Audits",
       "Green Building Consultancy",
@@ -170,7 +170,7 @@ export const services = [
     icon: "🚰",
     img: c1,
     path: "compliance-management",
-    bgColor: "#97dd00",
+    bgColor: "#a6ee0a",
     subServices: [
       "Renewable Energy Systems",
       "Air Quality Monitoring",

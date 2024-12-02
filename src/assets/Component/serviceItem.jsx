@@ -16,7 +16,9 @@ const ServiceItem = () => {
 
   const handleCartButtonClick = () => {
     if (!authState.isAuthenticated) {
+      cartDispatch({ type: "REMOVE_FROM_CART", payload: subService });
       navigate("/login");
+      
     }
 
     if (isAlreadyInCart) {
