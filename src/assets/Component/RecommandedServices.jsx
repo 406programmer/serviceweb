@@ -17,7 +17,7 @@ const RecommandedServices = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          console.error('Error fetching data:', response.statusText);
+          console.error("Error fetching data:", response.statusText);
           throw new Error("Network response was not ok");
         }
         return response.json();
@@ -28,10 +28,6 @@ const RecommandedServices = () => {
       .catch((error) => {
         console.error("Error fetching recommended services:", error);
       });
-  }, []);
-
-  useEffect(() => {
-    window.scrollTo(0, 0); 
   }, []);
 
   const findServiceDetails = (serviceName) => {
@@ -47,9 +43,9 @@ const RecommandedServices = () => {
   return (
     <div className={styles.recommendations}>
       <h2>Recommended Services</h2>
-      <div className={styles.recommendationList}>
-        {recommendedServices.length > 0 ? (
-          recommendedServices.map((recommendedService, index) => {
+      <div className={styles.sliderContainer}>
+        <div className={styles.slider}>
+          {recommendedServices.map((recommendedService, index) => {
             const serviceDetails = findServiceDetails(recommendedService.ServiceName);
             return (
               <div key={index} className={styles.serviceCard}>
@@ -62,9 +58,10 @@ const RecommandedServices = () => {
                 <p>{serviceDetails?.description || "No description available."}</p>
                 <button
                   onClick={() =>
-                    navigate(`/services/${serviceDetails.path}/${recommendedService.ServiceName}`, {
-                      state: { subService: serviceDetails },
-                    })
+                    navigate(
+                      `/services/${serviceDetails.path}/${recommendedService.ServiceName}`,
+                      { state: { subService: serviceDetails } }
+                    )
                   }
                   className={styles.button}
                 >
@@ -72,14 +69,11 @@ const RecommandedServices = () => {
                 </button>
               </div>
             );
-          })
-        ) : (
-          <p>No recommended services available.</p>
-        )}
+          })}
+        </div>
       </div>
     </div>
   );
 };
 
 export default RecommandedServices;
-//1

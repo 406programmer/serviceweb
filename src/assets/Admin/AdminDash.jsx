@@ -4,6 +4,7 @@ import AHeader from './AHeader';
 import ASidebar from './ASidebar';
 import AHome from './AHome';
 
+
 export  default function AdminDash() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
 
@@ -13,9 +14,11 @@ export  default function AdminDash() {
 
   return (
     <div className={styles.gridContainer}>
-      <AHeader OpenSidebar={OpenSidebar} />
-      <ASidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
+      <div style={{width : "100vw" ,display : "flex" ,justifyContent :"center"}}>
+      <ASidebar/>
       <AHome />
+      </div>
+        
     </div>
   );
 }

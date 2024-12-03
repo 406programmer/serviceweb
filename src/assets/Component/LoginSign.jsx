@@ -38,7 +38,8 @@ const LoginSignup = () => {
       const body = { email, password };
   
       try {
-        const response = await fetch(url, {
+
+          const response = await fetch(url, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
@@ -50,7 +51,12 @@ const LoginSignup = () => {
         if (response.ok) {
           console.log('Response is OK');
           alert(isSignup ? "Signed up successfully!" : "Logged in successfully!");
-        
+          
+          if (email === "pv08429@gmail.com" && password === "123456") {
+            navigate("/AdminDashboard"); // Redirect to admin page
+            return;
+          }
+
           if (data.user) {
             console.log('User data:', data.user); // Log user data if available
         

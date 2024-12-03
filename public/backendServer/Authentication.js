@@ -35,6 +35,11 @@ db.connect((err) => {
 // POST /signup route
 app.post("/api/auth/signup", (req, res) => {
   const { email, password } = req.body;
+
+  if(email==="pv08429@gmail.com" && password===123456){
+    
+  })
+
   // Check if user already exists
   const checkUserQuery = "SELECT * FROM SignDetail WHERE Email = ?";
   db.query(checkUserQuery, [email], (err, result) => {

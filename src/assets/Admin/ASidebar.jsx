@@ -1,17 +1,16 @@
 import React from 'react';
 import { BsCart3, BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsMenuButtonWideFill, BsFillGearFill } from 'react-icons/bs';
 import styles from './ASidebar.module.css';
+import { FaUserTie } from "react-icons/fa6";
 
 function ASidebar({ openSidebarToggle, OpenSidebar }) {
   return (
     <aside id="sidebar" className={`${styles.sidebar} ${openSidebarToggle ? styles.sidebarResponsive : ''}`}>
       <div className={styles.sidebarTitle}>
         <div className={styles.sidebarBrand}>
-          <BsCart3 className="icon_header" /> SHOP
+        <FaUserTie style={{fontSize : "60px"}}/>ADMIN
         </div>
-        <span className={styles.closeIcon} onClick={OpenSidebar}>
-          X
-        </span>
+       
       </div>
 
       <ul className={styles.sidebarList}>
@@ -22,7 +21,7 @@ function ASidebar({ openSidebarToggle, OpenSidebar }) {
         </li>
         <li className={styles.sidebarListItem}>
           <a href="">
-            <BsFillArchiveFill className="icon" /> Products
+            <BsFillArchiveFill className="icon" /> Services
           </a>
         </li>
         <li className={styles.sidebarListItem}>
@@ -32,7 +31,7 @@ function ASidebar({ openSidebarToggle, OpenSidebar }) {
         </li>
         <li className={styles.sidebarListItem}>
           <a href="">
-            <BsPeopleFill className="icon" /> Customers
+            <BsPeopleFill className="icon" /> Customers   
           </a>
         </li>
         <li className={styles.sidebarListItem}>

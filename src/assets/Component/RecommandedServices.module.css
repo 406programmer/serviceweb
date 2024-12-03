@@ -3,7 +3,7 @@
     width: 90%;
     font-family: Arial, sans-serif;
     overflow: hidden; 
-    background-color: #3a4556;/* Ensures content outside the container is hidden */
+    /* Ensures content outside the container is hidden */
   }
   
   .recommendations h2 {
@@ -72,4 +72,44 @@
   
   html {
   scroll-behavior: smooth;
+}
+
+.sliderContainer {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  width: max-content;
+  animation: slide 16s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  20%{
+    transform: translateX(-20%);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.serviceCard {
+  flex: 0 0 auto; /* Prevent shrinking */
+  margin: 0 10px; /* Space between cards */
+  width: 350px; /* Set card width */
+  text-align: center;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
