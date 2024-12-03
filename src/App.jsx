@@ -17,6 +17,7 @@ import { CartProvider } from "./assets/Context/CartContext";
 import LoginSign from "./assets/Component/LoginSign";
 import Cart from "./assets/Pages/Cart";
 import AdminDash  from "./assets/Admin/AdminDash";
+import Payment from "./assets/Pages/Payment";
 
 function App() {
   // ProtectedRoute Component for handling authorization
@@ -64,8 +65,8 @@ function App() {
                 path="/AdminDashboard"
                 element={<AdminDash/>} 
                   />
-                
             
+        <Route path="/payment" element={<Payment />} />
           </Routes>
         </Router>
       </CartProvider>

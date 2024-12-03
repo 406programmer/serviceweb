@@ -83,7 +83,7 @@
 .slider {
   display: flex;
   width: max-content;
-  animation: slide 16s linear infinite;
+  animation: slide 60s linear infinite;
 }
 
 @keyframes slide {
@@ -102,14 +102,12 @@
 }
 
 .serviceCard {
-  flex: 0 0 auto; /* Prevent shrinking */
-  margin: 0 10px; /* Space between cards */
-  width: 350px; /* Set card width */
+  flex: 0 0 auto;
+  margin: 0 10px; 
+  width: 350px; 
   text-align: center;
 }
 
-.image {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
+.serviceCard {
+  min-height: 72px;
 }

@@ -55,7 +55,7 @@ const RecommandedServices = () => {
                   className={styles.image}
                 />
                 <h3>{recommendedService.ServiceName}</h3>
-                <p>{serviceDetails?.description || "No description available."}</p>
+                <p >{serviceDetails?.description || "No description available."}</p>
                 <button
                   onClick={() =>
                     navigate(
