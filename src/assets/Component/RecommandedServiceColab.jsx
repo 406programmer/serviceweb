@@ -3,12 +3,21 @@ import { useNavigate } from "react-router-dom";
 import styles from "./RecommandedServices.module.css";
 import { services } from "../Pages/Service";
 
-const RecommandedServices = () => {
+const RecommandedServiceColab = () => {
   const [recommendedServices, setRecommendedServices] = useState([]);
   const navigate = useNavigate();
 
+  // Assuming you have a method to get the current logged-in user's ID
+  const userId = localStorage.getItem('user_id');  // Or use context, redux, etc.
+
   useEffect(() => {
-    fetch("http://localhost:5000/api/service_popularity", {
+    if (!userId) {
+      console.error("User is not logged in");
+      return;
+    }
+
+    // Pass the user_id to the API
+    fetch(`http://localhost:5003/recommendations?user_id=${userId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -23,12 +32,12 @@ const RecommandedServices = () => {
         return response.json();
       })
       .then((data) => {
-        setRecommendedServices(data);
+        setRecommendedServices(data.recommended_services || []);  // Update to reflect the API response structure
       })
       .catch((error) => {
         console.error("Error fetching recommended services:", error);
       });
-  }, []);
+  }, [userId]);
 
   const findServiceDetails = (serviceName) => {
     for (const service of services) {
@@ -41,8 +50,8 @@ const RecommandedServices = () => {
   };
 
   return (
-    <div className={`${styles.recommendations} bg-slate-200`}>
-      <h2>Best Recommended Services </h2>
+    <div className={`${styles.recommendations} bg-green-200 `}>
+      <h2>Customers who purchased this item also purchased</h2>
       <div className={styles.sliderContainer}>
         <div className={styles.slider}>
           {recommendedServices.map((recommendedService, index) => {
@@ -55,7 +64,7 @@ const RecommandedServices = () => {
                   className={styles.image}
                 />
                 <h3>{recommendedService.ServiceName}</h3>
-                <p >{serviceDetails?.description || "No description available."}</p>
+                <p>{serviceDetails?.description || "No description available."}</p>
                 <button
                   onClick={() =>
                     navigate(
@@ -76,4 +85,4 @@ const RecommandedServices = () => {
   );
 };
 
-export default RecommandedServices;
+export default RecommandedServiceColab;

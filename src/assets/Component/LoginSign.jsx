@@ -28,52 +28,55 @@ const LoginSignup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isSignup) {
-      validatePassword();
+      validatePassword(); // This ensures password validation is done before submission
+      if (passwordError) return; // Don't proceed if there is an error
     }
-  
+
     if (!passwordError) {
       const url = isSignup
         ? "http://localhost:5001/api/auth/signup"
         : "http://localhost:5001/api/auth/login";
       const body = { email, password };
-  
-      try {
 
-          const response = await fetch(url, {
+      try {
+        const response = await fetch(url, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
         });
-  
+
         const data = await response.json();
-        console.log('Response from server:', data); // Log the full response data
-  
+        console.log("Response from server:", data); // Log the full response data
+
         if (response.ok) {
-          console.log('Response is OK');
-          alert(isSignup ? "Signed up successfully!" : "Logged in successfully!");
-          
+          console.log("Response is OK");
+          alert(
+            isSignup ? "Signed up successfully!" : "Logged in successfully!"
+          );
+
           if (email === "pv08429@gmail.com" && password === "123456") {
             navigate("/AdminDashboard"); // Redirect to admin page
             return;
           }
 
           if (data.user) {
-            console.log('User data:', data.user); // Log user data if available
-        
+            console.log("User data:", data.user); // Log user data if available
+
             // Update the authentication state
             dispatch({
               type: "LOGIN",
-              payload: data.user, // Assuming the API returns user info
+              payload: data, // Assuming the API returns user info
             });
-            
-            // Navigate after successful login
+            localStorage.setItem("user_id", data.user.UserID);
+            localStorage.setItem("user_name", data.user.UserName);
+
             navigate(-1);
           } else {
-            console.log('No user data found'); // Log if user data is missing
+            console.log("No user data found"); // Log if user data is missing
             setErrorMessage(data.message); // Show error message
           }
         } else {
-          console.log('Error in response:', data.message); // Log error response from server
+          console.log("Error in response:", data.message); // Log error response from server
           setErrorMessage(data.message); // Show error message
         }
       } catch (error) {
@@ -82,23 +85,29 @@ const LoginSignup = () => {
       }
     }
   };
-  
 
   return (
     <div className={styles.overlay}>
       <div className={styles.formContainer}>
-        <button className={styles.closeButton} onClick={() => navigate("/home")}>
+        <button
+          className={styles.closeButton}
+          onClick={() => navigate("/home")}
+        >
           ×
         </button>
         <div className={styles.toggle}>
           <button
-            className={`${styles.toggleButton} ${!isSignup ? styles.active : ""}`}
+            className={`${styles.toggleButton} ${
+              !isSignup ? styles.active : ""
+            }`}
             onClick={() => setIsSignup(false)}
           >
             Login
           </button>
           <button
-            className={`${styles.toggleButton} ${isSignup ? styles.active : ""}`}
+            className={`${styles.toggleButton} ${
+              isSignup ? styles.active : ""
+            }`}
             onClick={() => setIsSignup(true)}
           >
             Signup
@@ -148,8 +157,7 @@ const LoginSignup = () => {
             </span>
           ) : (
             <span>
-              Not a member?{" "}
-              <a onClick={() => setIsSignup(true)}>Sign up</a>
+              Not a member? <a onClick={() => setIsSignup(true)}>Sign up</a>
             </span>
           )}
         </div>

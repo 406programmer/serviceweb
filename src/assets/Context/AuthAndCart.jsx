@@ -1,21 +1,38 @@
-import { useContext } from "react";
-import AuthContext from "./AuthContext";
-import CartContext from "./CartContext";
+import React, { createContext, useState, useEffect, useContext } from "react";
 
-export const useAuthAndCart = () => {
-  const { authState, dispatch: authDispatch } = useContext(AuthContext);
-  const { cart, dispatch: cartDispatch } = useContext(CartContext);
+// Create Context
+const AuthContext = createContext();
 
-  return {
-    // Authentication
-    isAuthenticated: authState.isAuthenticated,
-    user: authState.user,
-    login: (userData) => authDispatch({ type: "LOGIN", payload: userData }),
-    logout: () => authDispatch({ type: "LOGOUT" }),
+// AuthProvider Component
+export const AuthProvider = ({ children }) => {
+  const [authState, setAuthState] = useState({ user: null, loading: true });
+  
+  useEffect(() => {
+    const fetchAuthData = async () => {
+      try {
+        // Simulate async call to fetch auth data from backend
+        const response = await fetch("/api/auth"); // Replace with your backend API
+        const data = await response.json();
 
-    // Cart
-    cart,
-    addToCart: (item) => cartDispatch({ type: "ADD_TO_CART", payload: item }),
-    removeFromCart: (item) => cartDispatch({ type: "REMOVE_FROM_CART", payload: item }),
-  };
+        // Assuming the response contains user data
+        setAuthState({ user: data.user, loading: false });
+      } catch (error) {
+        console.error("Error fetching auth data:", error);
+        setAuthState({ user: null, loading: false });
+      }
+    };
+
+    fetchAuthData();
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{ authState }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+// Custom hook to use AuthContext
+export const useAuth = () => {
+  return useContext(AuthContext);
 };

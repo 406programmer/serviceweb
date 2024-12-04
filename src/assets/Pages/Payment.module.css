@@ -1,0 +1,155 @@
+/* Payment.module.css */
+
+.container {
+    text-align: center;
+    margin-top: 50px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    height: 40vh;
+    margin: auto;
+  }
+  
+  .heading {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .totalAmount {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 30px;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .paymentButton {
+    padding: 12px 30px;
+    font-size: 18px;
+    background-color: #3399cc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .paymentButton:hover {
+    background-color: #297a99;
+    transform: scale(1.05);
+  }
+  
+  .paymentButton:disabled {
+    background-color: #b5d9e1;
+    cursor: not-allowed;
+  }
+  
+  .loadingText {
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 20px;
+  }
+  
+  .alert {
+    font-size: 1rem;
+    color: red;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  
+  .cardInfoSection {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .cardInfoText {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .cardLogo {
+    width: 10rem;
+    height: auto;
+   ;
+  }
+  
+  .paymentInfoContainer {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .paymentInfoContainer h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  
+  
+  .themeColor {
+    color: #3399cc;
+  }
+  
+  .error {
+    color: #f44336;
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .prefillInfo {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 10px;
+    color: #333;
+    text-align: left;
+  }
+  
+  .prefillInfo span {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .prefillInfo br {
+    margin-bottom: 5px;
+  }
+  
+  /* You can also add some padding or border if you want the info to stand out more */
+  .prefillInfo {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+
+ .backButton {
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #444;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+
+  
+  .backButton:hover {
+    background-color: #333;
+  }

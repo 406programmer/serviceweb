@@ -59,6 +59,27 @@ export default function Home() {
           <IoIosArrowBack />
         </button>
       </div>
+      {/* <div className={styles.textSection}>
+  <div className={styles.textBox}>
+    <h2>Welcome to Falcon eBiz</h2>
+    <p>
+      We specialize in transforming business services through the latest technological advances. Falcon eBiz, operating since May 2016, offers a wide range of services that help businesses grow and succeed in India.
+    </p>
+  </div>
+  <div className={styles.textBox}>
+    <h3>Our Commitment</h3>
+    <p>
+      We provide comprehensive support at every stage, ensuring businesses stay compliant and grow sustainably. Our goal is to assist entrepreneurs with legal and regulatory requirements, making it easier to start and manage a business.
+    </p>
+  </div>
+  <div className={styles.textBox}>
+    <h3>Business Intelligence</h3>
+    <p>
+      We help businesses understand their vendors, customers, and competitors for better financial planning and market positioning. Our services empower businesses with the knowledge they need to thrive.
+    </p>
+  </div>
+</div> */}
+
   
     </main>
   );

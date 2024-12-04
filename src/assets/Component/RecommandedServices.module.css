@@ -1,8 +1,9 @@
 .recommendations {
     margin: 20px auto;
-    width: 90%;
+    width: 100vw;
     font-family: Arial, sans-serif;
     overflow: hidden; 
+    padding: 2rem 3rem;
     /* Ensures content outside the container is hidden */
   }
   

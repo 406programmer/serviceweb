@@ -1,0 +1,46 @@
+/* PaymentSuccess.module.css */
+.container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .iconContainer {
+    font-size: 50px;
+    color: green;
+  }
+  
+  .successIcon {
+    color: #4caf50;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .message {
+    margin: 10px 0;
+  }
+  
+  .details {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  .transactionId {
+    font-weight: bold;
+  }
+  
+  .continueButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .continueButton:hover {
+    background-color: #45a049;
+  }
+  

@@ -1,48 +1,68 @@
 import React, { useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./ServiceItem.module.css";
-import CartContext from "../Context/CartContext";
-import AuthContext from "../Context/AuthContext";
+import { useCart } from "../Context/CartContext";
+import { useAuth } from "../Context/AuthContext";
 import StarRating from "./StarRating";
 
 const ServiceItem = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { subService } = location.state || {}; // Get sub-service data from state
-  const { cart, dispatch: cartDispatch } = useContext(CartContext); // Access cart and dispatch from CartContext
-  const { authState, dispatch: authDispatch } = useContext(AuthContext); // Access authState and dispatch from AuthContext
+  const { cartState, dispatch: cartDispatch } = useCart(); // Access cart context
+  const { authState } = useAuth(); // Access authState from AuthContext
 
-  const isAlreadyInCart = cart.some((item) => item.id === subService?.id);
+  // Check if the item is already in the cart
+  const isAlreadyInCart = Array.isArray(cartState.items)
+    ? cartState.items.some((item) => item.id === subService?.id)
+    : false;
 
+  // Handle Add/Remove from Cart
   const handleCartButtonClick = () => {
     if (!authState.isAuthenticated) {
-      cartDispatch({ type: "REMOVE_FROM_CART", payload: subService });
       navigate("/login");
-      
+      return;
     }
 
     if (isAlreadyInCart) {
-      // Remove item from cart
       cartDispatch({ type: "REMOVE_FROM_CART", payload: subService });
     } else {
-      // Add item to cart
       cartDispatch({ type: "ADD_TO_CART", payload: subService });
     }
   };
 
+  // Handle missing sub-service
   if (!subService) {
-    return <div className={styles.error}>Service not found or invalid access!</div>;
+    return (
+      <div className={styles.error}>
+        <p>Service not found. Please return to the services page.</p>
+        <button
+          onClick={() => navigate("/services")}
+          className={styles.backButton}
+        >
+          Back to Services
+        </button>
+      </div>
+    );
   }
 
+  // Scroll to top on mount
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to top on component mount
+    window.scrollTo(0, 0);
   }, [subService]);
 
   return (
     <div className={styles.serviceItem}>
-      <header className={styles.header} style={{ backgroundImage: `url(${subService.image})` }}>
+      <header
+        className={styles.header}
+        style={{ backgroundImage: `url(${subService.image || "default.jpg"})` }}
+      >
         <h1 className={styles.title}>{subService.name}</h1>
-        <img src={subService.image} alt={subService.name} className={styles.image} />
+        <img
+          src={subService.image}
+          alt={subService.name}
+          className={styles.image}
+        />
       </header>
 
       <section className={styles.content}>
@@ -50,33 +70,39 @@ const ServiceItem = () => {
           <p>{subService.details?.overview}</p>
           <h2>Benefits</h2>
           <ul>
-            {subService.details.benefits.map((benefit, index) => (
+            {subService.details?.benefits?.map((benefit, index) => (
               <li key={index}>{benefit}</li>
             ))}
           </ul>
 
           <h2>Why Choose This Service?</h2>
           <ul>
-            {subService.details.whyChoose.map((reason, index) => (
+            {subService.details?.whyChoose?.map((reason, index) => (
               <li key={index}>{reason}</li>
             ))}
           </ul>
 
           <h2>Procedure</h2>
           <ol>
-            {subService.details.procedure.map((step, index) => (
+            {subService.details?.procedure?.map((step, index) => (
               <li key={index}>{step}</li>
             ))}
           </ol>
         </div>
         <StarRating />
-        <button onClick={handleCartButtonClick} className={styles.cartButton}>
-          {isAlreadyInCart ? "Remove from Cart" : "Add to Cart"}
-        </button>
+        <div className=" flex flex-col ">
 
-        <button onClick={() => window.history.back()} className={styles.backButton}>
-          Back
-        </button>
+        <div >
+          <button onClick={handleCartButtonClick} className={styles.cartButton}>
+            {isAlreadyInCart ? "Remove from Cart" : "Add to Cart"}
+          </button>
+          <button onClick={() => navigate(-1)} className={styles.backButton}>
+            Back
+          </button>
+        </div>
+         {isAlreadyInCart && <button className={styles.gotoCartButton} onClick={()=>{navigate("/cart");
+    window.scrollTo(0, 0);}}>Go to Cart</button>}
+        </div>
       </section>
     </div>
   );

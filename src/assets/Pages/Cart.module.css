@@ -1,7 +1,8 @@
 .cartContainer {
-  padding: 20px;
+  padding-top: 20px;
   min-height: 50vh;
   font-family: Arial, sans-serif;
+  
 }
 
 .cartTitle {
